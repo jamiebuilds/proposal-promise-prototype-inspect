@@ -1,0 +1,18 @@
+{
+  "name": "ecmascript-promise-getvalue",
+  "author": "James Kyle <me@thejameskyle.com>",
+  "repository": "thejameskyle/ecmascript-promise-getvalue",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "if [[ '$npm_config_user_agent' != *'yarn'* ]]; then echo 'Use Yarn!'; exit 0; fi"
+  },
+  "keywords": [
+    "ecmascript",
+    "promise",
+    "test262",
+    "promise.getValue"
+  ],
+  "devDependencies": {
+    "ecmarkup": "^3.11.2"
+  }
+}
