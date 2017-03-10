@@ -2,6 +2,10 @@
 
 ECMAScript proposal, specs, tests, and reference implementation for Promise internal fields accessors. (`Promise.getValue` and `Promise.is{Pending,Resolved,Rejected}`)
 
+## Spec
+
+You can view the spec in [ecmarkup](spec.emu) or rendered as [HTML](https://thejameskyle.github.io/proposal-promise-access-internal-fields/).
+
 ## Rationale
 
 Imagine you're writing a program that synchronously renders once per frame.
@@ -62,9 +66,6 @@ if (Promise.isResolved(promise)) {
 
 Including `Promise.isRejected` and `Promise.isPending` makes sense once you
 already have `Promise.isResolved`.
-
-## Specification
-You can view the spec in [ecmarkup](spec.emu) or rendered as [HTML](https://thejameskyle.github.io/proposal-promise-access-internal-fields/).
 
 ## Status of This Proposal
 
