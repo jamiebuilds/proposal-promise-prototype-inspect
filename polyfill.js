@@ -1,5 +1,3 @@
-const isPromise = require('is-promise');
-
 const PromiseStatus = Symbol('[[PromiseStatus]]');
 const PromiseValue = Symbol('[[PromiseValue]]');
 
