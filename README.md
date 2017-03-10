@@ -1,6 +1,6 @@
-# Promise.getValue
+# Promise internal fields accessors
 
-ECMAScript proposal, specs, tests, and reference implementation for Promise.getValue.
+ECMAScript proposal, specs, tests, and reference implementation for Promise internal fields accessors. (`Promise.getValue` and `Promise.is{Pending,Resolved,Rejected}`)
 
 ## Rationale
 

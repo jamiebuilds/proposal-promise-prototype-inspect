@@ -1,7 +1,7 @@
 {
-  "name": "ecmascript-promise-getvalue",
+  "name": "proposal-promise-access-internal-fields",
   "author": "James Kyle <me@thejameskyle.com>",
-  "repository": "thejameskyle/ecmascript-promise-getvalue",
+  "repository": "thejameskyle/proposal-promise-access-internal-fields",
   "license": "MIT",
   "scripts": {
     "preinstall": "if [[ '$npm_config_user_agent' != *'yarn'* ]]; then echo 'Use Yarn!'; exit 0; fi"
