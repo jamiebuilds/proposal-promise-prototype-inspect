@@ -44,6 +44,25 @@ requestAnimationFrame(syncRender);
 The same argument can be made any time you have a promise that could be
 resolved synchronously. Waiting for the next tick isn't always an option.
 
+Since promises can resolve to any type of value, it's hard to say what
+`Promise.getValue` should return when the promise is pending:
+
+- `return undefined` (Bad: `Promise.resolve(undefined)`)
+- `throw new Error` (Bad: Awkward API, Performance)
+- `return Promise.wellKnownValue` (Bad: Awkward API)
+
+Instead, if we expose the status of the promise before `Promise.getValue()` is
+called. We can avoid ambiguity or awkward APIs.
+
+```js
+if (Promise.isResolved(promise)) {
+  component = Promise.getValue(promise);
+}
+```
+
+Including `Promise.isRejected` and `Promise.isPending` makes sense once you
+already have `Promise.isResolved`.
+
 ## Specification
 You can view the spec in [ecmarkup](spec.emu) or rendered as [HTML](https://thejameskyle.github.io/proposal-promise-access-internal-fields/).
 
