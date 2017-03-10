@@ -45,7 +45,7 @@ The same argument can be made any time you have a promise that could be
 resolved synchronously. Waiting for the next tick isn't always an option.
 
 ## Specification
-You can view the spec in [ecmarkup](spec.emu) or rendered as [HTML](https://thejameskyle.github.io/proposal-promise-getvalue/).
+You can view the spec in [ecmarkup](spec.emu) or rendered as [HTML](https://thejameskyle.github.io/proposal-promise-access-internal-fields/).
 
 ## Status of This Proposal
 
