@@ -48,6 +48,9 @@ requestAnimationFrame(syncRender);
 The same argument can be made any time you have a promise that could be
 resolved synchronously. Waiting for the next tick isn't always an option.
 
+There are other forms other than `import()`: `fetch()` or any other promise
+returning API where the result might be available synchronously applies.
+
 Since promises can resolve to any type of value, it's hard to say what
 `Promise.getValue` should return when the promise is pending:
 
