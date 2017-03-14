@@ -18,14 +18,14 @@ However, if you have loaded the component already you run into a problem with
 is synchronous, and you don't want to show a flash of a loading frame for a
 single frame.
 
-If you could inspect the promise to see if it was resolved synchronously and
-then retrieve the internal value synchronously, you can retrieve your component
+If JavaScript has a reflection api for inspecting promises allowing you to
+synchronously retrieve the internal value, you could retrieve your component
 within the same tick and avoid flashing the loading state for a single frame.
 
 ```js
 let component = null;
 let promiseComponent = import("./component").then(loadedComponent => {
-  component = loadedComponent;
+  component = loadedComponent.default;
 });
 
 if (Promise.isResolved(promise)) {
@@ -70,6 +70,42 @@ if (Promise.isResolved(promise)) {
 
 Including `Promise.isRejected` and `Promise.isPending` makes sense once you
 already have `Promise.isResolved`.
+
+#### Why not solve for just `import()`?
+
+If you're looking to make a synchronous optimization like the one in the
+example above, it's going to end up applying to any promise.
+
+Instead of an `import()` it could be a `fetch()` with a cached result.
+
+```js
+fetch('./data.json')
+```
+
+It could be a memoized async function.
+
+```js
+let doSomething = memoize(async () => {
+  // ...
+});
+```
+
+If you're writing code that accepts a promise and you want to optimize the
+synchronous case, you'll want to accept any promise and not just the qualified
+ones.
+
+### Why methods on `Promise` instead of `Promise.prototype`?
+
+These should be considered reflection apis, we don't want users
+accidentally using them because they don't understand async vs sync.
+
+```js
+let value = fetch('./data.json').getValue();
+```
+
+These could even get pushed to `Reflect` as `Reflect.getPromiseValue` and
+`Reflect.isPromiseResolved` to better communicate that they are not meant for
+everyday use.
 
 ## Status of This Proposal
 
