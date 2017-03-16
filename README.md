@@ -25,7 +25,7 @@ within the same tick and avoid flashing the loading state for a single frame.
 ```js
 function syncRender() {
   let component = null;
-  let promiseComponent = import("./component").then(loadedComponent => {
+  let promise = import("./component").then(loadedComponent => {
     component = loadedComponent.default;
   });
 
