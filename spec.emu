@@ -4,31 +4,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
 <script src="./spec.js"></script>
 <pre class="metadata">
-title: Promise internal fields accessors
+title: Promise.prototype.inspect
 stage: 0
 contributors: James Kyle
 </pre>
 
-<emu-clause id="Promise.getValue">
-    <h1>Promise.getValue ( promise )</h1>
-
-    <p>The following steps are taken:</p>
-</emu-clause>
-
-<emu-clause id="Promise.isPending">
-    <h1>Promise.isPending ( promise )</h1>
-
-    <p>The following steps are taken:</p>
-</emu-clause>
-
-<emu-clause id="Promise.isResolved">
-    <h1>Promise.isResolved ( promise )</h1>
-
-    <p>The following steps are taken:</p>
-</emu-clause>
-
-<emu-clause id="Promise.isRejected">
-    <h1>Promise.isRejected ( promise )</h1>
+<emu-clause id="Promise.prototype.inspect">
+    <h1>Promise.prototype.inspect ( )</h1>
 
     <p>The following steps are taken:</p>
 </emu-clause>

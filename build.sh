@@ -2,7 +2,7 @@
 
 set -e
 
-BUILD_DIR=`mktemp -dt ecmascript-promise-getvalue` || exit 1
+BUILD_DIR=`mktemp -dt ecmascript-promise-prototype-inspect` || exit 1
 trap "rm -rf $BUILD_DIR" EXIT
 mkdir "$BUILD_DIR/out"
 

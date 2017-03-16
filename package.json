@@ -1,7 +1,7 @@
 {
-  "name": "proposal-promise-access-internal-fields",
+  "name": "proposal-promise-prototype-inspect",
   "author": "James Kyle <me@thejameskyle.com>",
-  "repository": "thejameskyle/proposal-promise-access-internal-fields",
+  "repository": "thejameskyle/proposal-promise-prototype-inspect",
   "license": "MIT",
   "scripts": {
     "preinstall": "if [[ '$npm_config_user_agent' != *'yarn'* ]]; then echo 'Use Yarn!'; exit 0; fi"
@@ -10,7 +10,7 @@
     "ecmascript",
     "promise",
     "test262",
-    "promise.getValue"
+    "promise.prototype.inspect"
   ],
   "devDependencies": {
     "ecmarkup": "^3.11.2"

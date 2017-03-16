@@ -1,10 +1,10 @@
-# Promise internal fields accessors
+# Promise.prototype.inspect
 
-ECMAScript proposal, specs, tests, and reference implementation for Promise internal fields accessors. (`Promise.getValue` and `Promise.is{Pending,Resolved,Rejected}`)
+ECMAScript proposal, specs, tests, and reference implementation for `Promise.prototype.inspect`.
 
 ## Spec
 
-You can view the spec in [ecmarkup](spec.emu) or rendered as [HTML](https://thejameskyle.github.io/proposal-promise-access-internal-fields/).
+You can view the spec in [ecmarkup](spec.emu) or rendered as [HTML](https://thejameskyle.github.io/proposal-promise-prototype-inspect/).
 
 ## Rationale
 
@@ -29,8 +29,9 @@ function syncRender() {
     component = loadedComponent.default;
   });
 
-  if (Promise.isResolved(promise)) {
-    component = Promise.getValue(promise);
+  let inspected = promise.inspect();
+  if (inspected.state === 'fulfilled') {
+    component = inspected.value.default;
   }
 
   if (component !== null) {
@@ -52,24 +53,13 @@ There are other forms other than `import()`: `fetch()` or any other promise
 returning API where the result might be available synchronously (ex: due to
 caching or memoization) applies.
 
-Since promises can resolve to any type of value, it's hard to say what
-`Promise.getValue` should return when the promise is pending:
-
-- `return undefined` (Bad: `Promise.resolve(undefined)`)
-- `throw new Error` (Bad: Awkward API, Performance)
-- `return Promise.wellKnownValue` (Bad: Awkward API)
-
-Instead, if we expose the status of the promise before `Promise.getValue()` is
-called. We can avoid ambiguity or awkward APIs.
+`Promise.prototype.inspect` would return one of the following values.
 
 ```js
-if (Promise.isResolved(promise)) {
-  component = Promise.getValue(promise);
-}
+{ state: "pending" }
+{ state: "fulfilled", value }
+{ state: "rejected", reason }
 ```
-
-Including `Promise.isRejected` and `Promise.isPending` makes sense once you
-already have `Promise.isResolved`.
 
 #### Why not solve for just `import()`?
 
@@ -93,19 +83,6 @@ let doSomething = memoize(async () => {
 If you're writing code that accepts a promise and you want to optimize the
 synchronous case, you'll want to accept any promise and not just the qualified
 ones.
-
-### Why methods on `Promise` instead of `Promise.prototype`?
-
-These should be considered reflection apis, we don't want users
-accidentally using them because they don't understand async vs sync.
-
-```js
-let value = fetch('./data.json').getValue();
-```
-
-These could even get pushed to `Reflect` as `Reflect.getPromiseValue` and
-`Reflect.isPromiseResolved` to better communicate that they are not meant for
-everyday use.
 
 ## Status of This Proposal
 
